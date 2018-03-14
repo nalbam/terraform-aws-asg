@@ -1,11 +1,11 @@
 output "id" {
-  value = "${aws_autoscaling_group.default.*.id}"
+  value = "${aws_autoscaling_group.default.id}"
 }
 
 output "arn" {
-  value = "${aws_autoscaling_group.default.*.arn}"
+  value = "${aws_autoscaling_group.default.arn}"
 }
 
 output "name" {
-  value = "${aws_autoscaling_group.default.*.name}"
+  value = "${aws_autoscaling_group.default.name}"
 }
