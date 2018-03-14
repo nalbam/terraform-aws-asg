@@ -1,7 +1,7 @@
 # Auto Scaling Group
 
 resource "aws_launch_configuration" "default" {
-  count = "${var.create_lc == true ? 1 : 0}"
+  count = "${var.launch_configuration == "" ? 1 : 0}"
 
   name_prefix = "${coalesce(var.lc_name, var.name)}-"
   image_id = "${var.image_id == "" ? module.ami.amazon_linux : var.image_id}"
@@ -26,10 +26,8 @@ resource "aws_launch_configuration" "default" {
 }
 
 resource "aws_autoscaling_group" "default" {
-  count = "${var.create_asg == true ? 1 : 0}"
-
   name_prefix = "${coalesce(var.asg_name, var.name)}-"
-  launch_configuration = "${var.create_lc == true ? element(aws_launch_configuration.default.*.name, 0) : var.launch_configuration}"
+  launch_configuration = "${var.launch_configuration == "" ? element(aws_launch_configuration.default.*.name, 0) : var.launch_configuration}"
   vpc_zone_identifier = [
     "${var.vpc_zone_identifier}"
   ]

@@ -2,16 +2,6 @@ variable region {
   default = "us-east-1"
 }
 
-variable "create_lc" {
-  description = "Whether to create launch configuration"
-  default = true
-}
-
-variable "create_asg" {
-  description = "Whether to create autoscaling group"
-  default = true
-}
-
 variable "name" {
   description = "Creates a unique name beginning with the specified prefix"
 }
@@ -55,6 +45,7 @@ variable "key_name" {
 variable "security_groups" {
   description = "A list of security group IDs to assign to the launch configuration"
   type = "list"
+  default = []
 }
 
 variable "associate_public_ip_address" {
@@ -124,6 +115,7 @@ variable "desired_capacity" {
 variable "vpc_zone_identifier" {
   description = "A list of subnet IDs to launch resources in"
   type = "list"
+  default = []
 }
 
 variable "default_cooldown" {
