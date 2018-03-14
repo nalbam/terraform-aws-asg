@@ -15,6 +15,14 @@ module "sample" {
   security_groups = [
     "sg-edcd9784", "sg-edcd9785"
   ]
+
+  tags = [
+    {
+      key = "spot-enabled"
+      value = "true"
+      propagate_at_launch = true
+    }
+  ]
 }
 ```
 
