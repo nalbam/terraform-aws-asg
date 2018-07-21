@@ -1,7 +1,8 @@
 # terraform-aws-asg
 
 ## usage
-```
+
+```hcl
 module "sample" {
   source = "git::https://github.com/nalbam/terraform-aws-asg.git"
   region = "${var.region}"
@@ -21,7 +22,7 @@ module "sample" {
     "${module.elb.this_elb_id}"
   ]
 
-  user_data = "runuser -l ec2-user -c 'curl -s toast.sh/install-v3 | bash'"
+  user_data = "runuser -l ec2-user -c 'curl -sL toast.sh/helper/bastion.sh | bash'"
 
   tags = [
     {
@@ -34,4 +35,5 @@ module "sample" {
 ```
 
 ## reference
-* https://github.com/terraform-aws-modules/terraform-aws-autoscaling
+
+* <https://github.com/terraform-aws-modules/terraform-aws-autoscaling>

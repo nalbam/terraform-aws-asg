@@ -1,19 +1,19 @@
 name = "sample"
 
 vpc_zone_identifier = [
-  "sub-sample"
+  "sub-sample",
 ]
 
 security_groups = [
-  "sg-sample"
+  "sg-sample",
 ]
 
 health_check_type = "EC2"
 
 tags = [
   {
-    key = "spot-enabled"
-    value = "true"
+    key                 = "spot-enabled"
+    value               = "true"
     propagate_at_launch = true
-  }
+  },
 ]
