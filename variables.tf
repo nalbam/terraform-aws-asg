@@ -1,4 +1,4 @@
-variable region {
+variable "region" {
   default = "us-east-1"
 }
 
@@ -44,7 +44,7 @@ variable "key_name" {
 
 variable "security_groups" {
   description = "A list of security group IDs to assign to the launch configuration"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -70,19 +70,19 @@ variable "ebs_optimized" {
 
 variable "root_block_device" {
   description = "Customize details about the root block device of the instance"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
 variable "ebs_block_device" {
   description = "Additional EBS block devices to attach to the instance"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
 variable "ephemeral_block_device" {
   description = "Customize Ephemeral (also known as 'Instance Store') volumes on the instance"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -114,7 +114,7 @@ variable "desired_capacity" {
 
 variable "vpc_zone_identifier" {
   description = "A list of subnet IDs to launch resources in"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -141,18 +141,18 @@ variable "force_delete" {
 variable "load_balancers" {
   description = "A list of elastic load balancer names to add to the autoscaling group names"
   default     = []
-  type        = "list"
+  type        = list(string)
 }
 
 variable "target_group_arns" {
   description = "A list of aws_alb_target_group ARNs, for use with Application Load Balancing"
   default     = []
-  type        = "list"
+  type        = list(string)
 }
 
 variable "termination_policies" {
   description = "A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are OldestInstance, NewestInstance, OldestLaunchConfiguration, ClosestToNextInstanceHour, Default"
-  type        = "list"
+  type        = list(string)
 
   default = [
     "Default",
@@ -162,13 +162,13 @@ variable "termination_policies" {
 variable "suspended_processes" {
   description = "A list of processes to suspend for the AutoScaling Group. The allowed values are Launch, Terminate, HealthCheck, ReplaceUnhealthy, AZRebalance, AlarmNotification, ScheduledActions, AddToLoadBalancer. Note that if you suspend either the Launch or Terminate process types, it can prevent your autoscaling group from functioning properly."
   default     = []
-  type        = "list"
+  type        = list(string)
 }
 
 variable "tags" {
   description = "A list of tag blocks. Each element should have keys named key, value, and propagate_at_launch."
   default     = []
-  type        = "list"
+  type        = list(string)
 }
 
 variable "placement_group" {
@@ -183,7 +183,7 @@ variable "metrics_granularity" {
 
 variable "enabled_metrics" {
   description = "A list of metrics to collect. The allowed values are GroupMinSize, GroupMaxSize, GroupDesiredCapacity, GroupInServiceInstances, GroupPendingInstances, GroupStandbyInstances, GroupTerminatingInstances, GroupTotalInstances"
-  type        = "list"
+  type        = list(string)
 
   default = [
     "GroupMinSize",
