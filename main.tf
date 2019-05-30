@@ -1,13 +1,5 @@
 # Auto Scaling Group
 
-terraform {
-  required_version = ">= 0.12"
-}
-
-provider "aws" {
-  region = var.region
-}
-
 resource "aws_launch_configuration" "default" {
   count = var.launch_configuration == "" ? 1 : 0
 
