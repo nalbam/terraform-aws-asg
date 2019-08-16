@@ -2,7 +2,7 @@
 
 ## usage
 
-```hcl
+```terraform
 module "sample" {
   source = "git::https://github.com/nalbam/terraform-aws-asg.git"
   region = "${var.region}"
