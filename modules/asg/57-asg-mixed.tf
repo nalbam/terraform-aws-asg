@@ -28,6 +28,10 @@ resource "aws_launch_template" "worker-mixed" {
     name = aws_iam_instance_profile.worker.name
   }
 
+  monitoring {
+    enabled = var.enable_monitoring
+  }
+
   network_interfaces {
     delete_on_termination       = true
     associate_public_ip_address = var.associate_public_ip_address

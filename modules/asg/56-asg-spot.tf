@@ -10,8 +10,6 @@ resource "aws_launch_template" "worker-spot" {
 
   key_name = var.key_path != "" ? "${local.full_name}" : var.key_name
 
-  monitoring = var.enable_monitoring
-
   ebs_optimized = var.ebs_optimized
 
   block_device_mappings {
@@ -26,6 +24,10 @@ resource "aws_launch_template" "worker-spot" {
 
   iam_instance_profile {
     name = aws_iam_instance_profile.worker.name
+  }
+
+  monitoring {
+    enabled = var.enable_monitoring
   }
 
   network_interfaces {
