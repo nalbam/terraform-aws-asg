@@ -15,6 +15,10 @@ resource "aws_launch_configuration" "worker" {
 
   security_groups = [aws_security_group.worker.id]
 
+  enable_monitoring = var.enable_monitoring
+
+  ebs_optimized = var.ebs_optimized
+
   root_block_device {
     volume_type           = var.volume_type
     volume_size           = var.volume_size

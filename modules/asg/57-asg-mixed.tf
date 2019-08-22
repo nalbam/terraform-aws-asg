@@ -10,6 +10,10 @@ resource "aws_launch_template" "worker-mixed" {
 
   key_name = var.key_path != "" ? "${local.full_name}" : var.key_name
 
+  monitoring = var.enable_monitoring
+
+  ebs_optimized = var.ebs_optimized
+
   block_device_mappings {
     device_name = "/dev/xvda"
 

@@ -61,6 +61,14 @@ variable "mixed_instances" {
   default = []
 }
 
+variable "enable_monitoring" {
+  default = true
+}
+
+variable "ebs_optimized" {
+  default = true
+}
+
 variable "volume_type" {
   default = "gp2"
 }
