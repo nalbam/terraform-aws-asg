@@ -1,7 +1,7 @@
 # output
 
-output "iam_role_id" {
-  value = aws_iam_role.worker.id
+output "iam_role_name" {
+  value = aws_iam_role.worker.name
 }
 
 output "iam_instance_profile_name" {
