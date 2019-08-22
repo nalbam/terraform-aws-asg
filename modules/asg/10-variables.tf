@@ -98,6 +98,10 @@ variable "user_data" {
 }
 
 variable "tags" {
-  type    = list(string)
+  type = list(object({
+    key                 = string
+    value               = string
+    propagate_at_launch = boolean
+  }))
   default = []
 }
