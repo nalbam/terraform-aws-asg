@@ -7,7 +7,7 @@ resource "aws_launch_configuration" "worker" {
   image_id             = var.ami_id != "" ? var.ami_id : data.aws_ami.worker.id
   instance_type        = var.instance_type
   iam_instance_profile = aws_iam_instance_profile.worker.name
-  user_data_base64     = base64encode(var.userdata)
+  user_data_base64     = base64encode(var.user_data)
 
   key_name = var.key_path != "" ? "${local.full_name}" : var.key_name
 

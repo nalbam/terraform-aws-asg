@@ -93,6 +93,6 @@ variable "key_path" {
   default = ""
 }
 
-variable "userdata" {
+variable "user_data" {
   default = ""
 }
