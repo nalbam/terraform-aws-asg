@@ -96,9 +96,3 @@ variable "key_path" {
 variable "userdata" {
   default = ""
 }
-
-variable "allow_ip_address" {
-  description = "List of IP Address to permit access"
-  type        = list(string)
-  default     = ["*"]
-}
