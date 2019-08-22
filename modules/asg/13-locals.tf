@@ -7,11 +7,14 @@ locals {
 }
 
 locals {
-  worker_tags = [
-    {
-      key                 = "Name"
-      value               = local.full_name
-      propagate_at_launch = true
-    },
-  ]
+  worker_tags = concat(
+    [
+      {
+        key                 = "Name"
+        value               = local.full_name
+        propagate_at_launch = true
+      },
+    ],
+    vasr.tags,
+  )
 }

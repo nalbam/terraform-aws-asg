@@ -96,3 +96,8 @@ variable "key_path" {
 variable "user_data" {
   default = ""
 }
+
+variable "tags" {
+  type    = list(string)
+  default = []
+}
