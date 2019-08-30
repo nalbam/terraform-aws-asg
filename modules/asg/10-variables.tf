@@ -53,7 +53,7 @@ variable "ami_id" {
 }
 
 variable "instance_type" {
-  default = "m5.large"
+  default = "t2.micro"
 }
 
 variable "mixed_instances" {
