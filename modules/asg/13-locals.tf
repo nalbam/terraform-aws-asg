@@ -1,7 +1,7 @@
 # locals
 
 locals {
-  full_name = "${var.city}-${var.stage}-${var.name}-${var.suffix}"
+  full_name = var.name
 
   asg_count = var.launch_each_subnet ? length(var.subnet_ids) : 1
 }
