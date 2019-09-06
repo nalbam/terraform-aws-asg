@@ -5,14 +5,12 @@ variable "name" {
 }
 
 variable "vpc_id" {
-  description = "The VPC ID."
-  default     = ""
+  default = ""
 }
 
 variable "subnet_ids" {
-  description = "List of Subnet Ids"
-  type        = list(string)
-  default     = []
+  type    = list(string)
+  default = []
 }
 
 variable "launch_configuration_enable" {
@@ -32,8 +30,7 @@ variable "associate_public_ip_address" {
 }
 
 variable "ami_id" {
-  description = "AMI ID of the instance, e.g: ami-000000"
-  default     = ""
+  default = ""
 }
 
 variable "instance_type" {
