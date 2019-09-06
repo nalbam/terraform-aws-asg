@@ -6,11 +6,7 @@
 module "bastion" {
   source = "github.com/nalbam/terraform-aws-asg/modules/asg"
 
-  region = var.region
-  city   = var.city
-  stage  = var.stage
-  name   = var.name
-  suffix = var.suffix
+  name = var.name
 
   vpc_id = var.vpc_id
 
@@ -30,10 +26,10 @@ module "bastion" {
   volume_size = "8"
 
   min = "1"
-  max = "1"
+  max = "5"
 
-  on_demand_base = "0"
-  on_demand_rate = "0"
+  on_demand_base = "1"
+  on_demand_rate = "30"
 
   key_name = "nalbam-seoul"
 

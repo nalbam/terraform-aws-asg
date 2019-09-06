@@ -1,4 +1,4 @@
-# eks worker
+# launch template for spot
 
 resource "aws_launch_template" "worker-spot" {
   count = var.launch_template_enable ? length(var.mixed_instances) == 0 ? 1 : 0 : 0

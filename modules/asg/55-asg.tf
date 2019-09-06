@@ -1,4 +1,4 @@
-# eks worker
+# launch configuration
 
 resource "aws_launch_configuration" "worker" {
   count = var.launch_configuration_enable ? 1 : 0

@@ -1,4 +1,4 @@
-# worker iam role
+# iam role
 
 resource "aws_iam_role" "worker" {
   name = "${local.full_name}"

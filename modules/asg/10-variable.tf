@@ -1,7 +1,7 @@
 # variable
 
 variable "name" {
-  description = "Name of the cluster, e.g: demo"
+  description = "Name of the cluster, e.g: seoul-dev-demo"
 }
 
 variable "vpc_id" {

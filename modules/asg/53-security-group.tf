@@ -1,8 +1,7 @@
-# worker security group
+# security group
 
 resource "aws_security_group" "worker" {
-  name        = "${local.full_name}"
-  description = "Security group for all worker nodes in the cluster"
+  name = "${local.full_name}"
 
   vpc_id = var.vpc_id
 
