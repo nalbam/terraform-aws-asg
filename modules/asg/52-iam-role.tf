@@ -1,7 +1,7 @@
 # iam role
 
 resource "aws_iam_role" "worker" {
-  name = "${local.full_name}"
+  name = var.name
 
   assume_role_policy = <<POLICY
 {
@@ -21,6 +21,6 @@ POLICY
 }
 
 resource "aws_iam_instance_profile" "worker" {
-  name = "${local.full_name}"
+  name = var.name
   role = aws_iam_role.worker.name
 }

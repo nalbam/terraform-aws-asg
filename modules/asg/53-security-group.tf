@@ -1,7 +1,7 @@
 # security group
 
 resource "aws_security_group" "worker" {
-  name = "${local.full_name}"
+  name = var.name
 
   vpc_id = var.vpc_id
 
@@ -13,6 +13,6 @@ resource "aws_security_group" "worker" {
   }
 
   tags = {
-    "Name" = "${local.full_name}"
+    "Name" = var.name
   }
 }

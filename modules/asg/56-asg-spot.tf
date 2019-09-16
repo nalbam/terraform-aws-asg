@@ -3,12 +3,12 @@
 resource "aws_launch_template" "worker-spot" {
   count = var.launch_template_enable ? length(var.mixed_instances) == 0 ? 1 : 0 : 0
 
-  name_prefix   = "${local.full_name}-spot-"
+  name_prefix   = "${var.name}-spot-"
   image_id      = var.ami_id != "" ? var.ami_id : data.aws_ami.worker.id
   instance_type = var.instance_type
   user_data     = base64encode(var.user_data)
 
-  key_name = var.key_path != "" ? "${local.full_name}" : var.key_name
+  key_name = var.key_path != "" ? var.name : var.key_name
 
   # ebs_optimized = var.ebs_optimized
 
@@ -44,7 +44,7 @@ resource "aws_launch_template" "worker-spot" {
 resource "aws_autoscaling_group" "worker-spot" {
   count = var.launch_template_enable ? length(var.mixed_instances) == 0 ? local.asg_count : 0 : 0
 
-  name = var.launch_each_subnet ? "${local.full_name}-spot-${count.index + 1}" : "${local.full_name}-spot"
+  name = var.launch_each_subnet ? "${var.name}-spot-${count.index + 1}" : "${var.name}-spot"
 
   min_size = var.min
   max_size = var.max

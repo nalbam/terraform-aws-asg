@@ -1,8 +1,6 @@
 # locals
 
 locals {
-  full_name = var.name
-
   asg_count = var.launch_each_subnet ? length(var.subnet_ids) : 1
 }
 
@@ -11,7 +9,7 @@ locals {
     [
       {
         key                 = "Name"
-        value               = local.full_name
+        value               = var.name
         propagate_at_launch = true
       },
     ],
