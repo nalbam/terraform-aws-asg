@@ -13,6 +13,6 @@ resource "aws_security_group" "worker" {
   }
 
   tags = {
-    "Name" = var.name
+    Name = var.name
   }
 }
