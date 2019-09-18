@@ -4,7 +4,7 @@ resource "random_pet" "worker" {
   length = 1
 
   keepers = {
-    name = "${var.launch_configuration_enable}-${var.launch_template_enable}"
+    name = "${var.launch_configuration_enable}-${var.launch_template_enable}-${var.launch_each_subnet}"
   }
 }
 
