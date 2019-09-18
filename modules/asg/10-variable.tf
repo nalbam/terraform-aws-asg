@@ -87,6 +87,7 @@ variable "user_data" {
 }
 
 variable "security_groups" {
+  type    = list(string)
   default = []
 }
 
