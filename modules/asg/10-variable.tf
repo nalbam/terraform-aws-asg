@@ -88,8 +88,8 @@ variable "user_data" {
 
 variable "sg_ingress_sg" {
   type = list(object({
-    from_port       = string
-    to_port         = string
+    from_port       = number
+    to_port         = number
     protocol        = string
     security_groups = string
   }))
@@ -98,8 +98,8 @@ variable "sg_ingress_sg" {
 
 variable "sg_ingress_cidr" {
   type = list(object({
-    from_port   = string
-    to_port     = string
+    from_port   = number
+    to_port     = number
     protocol    = string
     cidr_blocks = string
   }))
