@@ -33,7 +33,10 @@ resource "aws_launch_template" "worker-spot" {
   network_interfaces {
     delete_on_termination       = true
     associate_public_ip_address = var.associate_public_ip_address
-    security_groups             = [aws_security_group.worker.id]
+    security_groups = concat(
+      [aws_security_group.worker.id],
+      var.security_groups,
+    )
   }
 
   instance_market_options {
