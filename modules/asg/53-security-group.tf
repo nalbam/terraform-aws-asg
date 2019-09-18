@@ -1,7 +1,15 @@
 # security group
 
+resource "random_pet" "worker" {
+  length = 1
+
+  keepers = {
+    name = "${var.launch_configuration_enable}-${var.launch_template_enable}"
+  }
+}
+
 resource "aws_security_group" "worker" {
-  name = var.name
+  name = "${var.name}-${random_pet.worker.id}"
 
   vpc_id = var.vpc_id
 
