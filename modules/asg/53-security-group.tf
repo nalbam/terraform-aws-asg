@@ -29,20 +29,20 @@ resource "aws_security_group" "worker" {
   dynamic "ingress" {
     for_each = var.sg_ingress_sg
     content {
-      from_port       = ingress.from_port
-      to_port         = ingress.to_port
-      protocol        = ingress.protocol
-      security_groups = [ingress.security_groups]
+      from_port       = ingress.value
+      to_port         = ingress.value
+      protocol        = ingress.value
+      security_groups = [ingress.value]
     }
   }
 
   dynamic "ingress" {
     for_each = var.sg_ingress_cidr
     content {
-      from_port   = ingress.from_port
-      to_port     = ingress.to_port
-      protocol    = ingress.protocol
-      cidr_blocks = [ingress.cidr_blocks]
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = ingress.value
+      cidr_blocks = [ingress.value]
     }
   }
 
