@@ -13,7 +13,10 @@ resource "aws_launch_configuration" "worker" {
 
   associate_public_ip_address = var.associate_public_ip_address
 
-  security_groups = [aws_security_group.worker.id]
+  security_groups = concat(
+    [aws_security_group.worker.id],
+    var.security_groups,
+  )
 
   enable_monitoring = var.enable_monitoring
 
