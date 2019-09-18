@@ -86,6 +86,26 @@ variable "user_data" {
   default = ""
 }
 
+variable "sg_ingress_sg" {
+  type = list(object({
+    from_port       = string
+    to_port         = string
+    protocol        = string
+    security_groups = string
+  }))
+  default = []
+}
+
+variable "sg_ingress_cidr" {
+  type = list(object({
+    from_port   = string
+    to_port     = string
+    protocol    = string
+    cidr_blocks = string
+  }))
+  default = []
+}
+
 variable "tags" {
   type = list(object({
     key                 = string
