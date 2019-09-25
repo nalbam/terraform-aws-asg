@@ -4,7 +4,7 @@
 
 ```terraform
 module "bastion" {
-  source = "github.com/nalbam/terraform-aws-asg/modules/asg"
+  source = "github.com/nalbam/terraform-aws-asg"
 
   name = var.name
 
