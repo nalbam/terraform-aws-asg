@@ -2,9 +2,11 @@
 
 terraform {
   backend "s3" {
-    region = "ap-northeast-2"
-    bucket = "terraform-mz-seoul"
-    key    = "asg-demo.tfstate"
+    region         = "ap-northeast-2"
+    bucket         = "terraform-nalbam-seoul"
+    key            = "asg-demo.tfstate"
+    encrypt        = true
+    dynamodb_table = "terraform-resource-lock"
   }
   required_version = ">= 0.12"
 }
@@ -18,9 +20,9 @@ module "asg" {
 
   name = "${var.name}-worker"
 
-  vpc_id = var.vpc_id
+  vpc_id = data.terraform_remote_state.vpc.outputs.vpc_id
 
-  subnet_ids = var.subnet_ids
+  subnet_ids = data.terraform_remote_state.vpc.outputs.public_subnet_ids
 
   launch_configuration_enable = var.launch_configuration_enable
   launch_template_enable      = var.launch_template_enable
