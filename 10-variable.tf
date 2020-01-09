@@ -13,6 +13,11 @@ variable "subnet_ids" {
   default = []
 }
 
+variable "subnet_azs" {
+  type    = list(string)
+  default = []
+}
+
 variable "launch_configuration_enable" {
   default = true
 }
