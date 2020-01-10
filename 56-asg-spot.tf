@@ -68,7 +68,7 @@ resource "aws_autoscaling_group" "worker-spot" {
       },
       {
         "key"                 = "asg:az"
-        "value"               = var.launch_each_subnet ? var.subnet_azs[count.index] : ""
+        "value"               = var.launch_each_subnet ? var.subnet_azs[count.index] : "-"
         "propagate_at_launch" = true
       },
     ],
