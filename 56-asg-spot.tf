@@ -55,7 +55,7 @@ resource "aws_autoscaling_group" "worker-spot" {
   vpc_zone_identifier = var.launch_each_subnet ? [var.subnet_ids[count.index]] : var.subnet_ids
 
   launch_template {
-    id      = aws_launch_template.worker-spot[0].id
+    id      = aws_launch_template.worker-spot.0.id
     version = "$Latest"
   }
 

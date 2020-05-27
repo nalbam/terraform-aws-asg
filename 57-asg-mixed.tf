@@ -58,7 +58,7 @@ resource "aws_autoscaling_group" "worker-mixed" {
 
     launch_template {
       launch_template_specification {
-        launch_template_id = aws_launch_template.worker-mixed[0].id
+        launch_template_id = aws_launch_template.worker-mixed.0.id
         version            = "$Latest"
       }
 
