@@ -58,7 +58,7 @@ resource "aws_autoscaling_group" "worker-mixed" {
 
     launch_template {
       launch_template_specification {
-        launch_template_id = aws_launch_template.worker-mixed.0.id
+        launch_template_id = aws_launch_template.worker-mixed[0].id
         version            = "$Latest"
       }
 
@@ -82,11 +82,11 @@ resource "aws_autoscaling_group" "worker-mixed" {
         "value"               = "mixed"
         "propagate_at_launch" = true
       },
-      {
-        "key"                 = "asg:az"
-        "value"               = var.launch_each_subnet ? var.subnet_azs[count.index] : "-"
-        "propagate_at_launch" = true
-      },
+      # {
+      #   "key"                 = "asg:az"
+      #   "value"               = var.launch_each_subnet ? var.subnet_azs[count.index] : "-"
+      #   "propagate_at_launch" = true
+      # },
     ],
     local.worker_tags,
   )

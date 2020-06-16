@@ -55,7 +55,7 @@ resource "aws_autoscaling_group" "worker-spot" {
   vpc_zone_identifier = var.launch_each_subnet ? [var.subnet_ids[count.index]] : var.subnet_ids
 
   launch_template {
-    id      = aws_launch_template.worker-spot.0.id
+    id      = aws_launch_template.worker-spot[0].id
     version = "$Latest"
   }
 
@@ -66,11 +66,11 @@ resource "aws_autoscaling_group" "worker-spot" {
         "value"               = "spot"
         "propagate_at_launch" = true
       },
-      {
-        "key"                 = "asg:az"
-        "value"               = var.launch_each_subnet ? var.subnet_azs[count.index] : "-"
-        "propagate_at_launch" = true
-      },
+      # {
+      #   "key"                 = "asg:az"
+      #   "value"               = var.launch_each_subnet ? var.subnet_azs[count.index] : "-"
+      #   "propagate_at_launch" = true
+      # },
     ],
     local.worker_tags,
   )
