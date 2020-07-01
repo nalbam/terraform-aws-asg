@@ -3,7 +3,8 @@
 resource "aws_launch_template" "worker-mixed" {
   count = var.launch_template_enable ? length(var.mixed_instances) > 0 ? 1 : 0 : 0
 
-  name_prefix   = "${var.name}-mixed-"
+  name_prefix = format("%s-%s-", var.name, "mixed")
+
   image_id      = var.ami_id != "" ? var.ami_id : data.aws_ami.worker.id
   instance_type = var.instance_type
   user_data     = base64encode(var.user_data)
@@ -43,7 +44,7 @@ resource "aws_launch_template" "worker-mixed" {
 resource "aws_autoscaling_group" "worker-mixed" {
   count = var.launch_template_enable ? length(var.mixed_instances) > 0 ? local.asg_count : 0 : 0
 
-  name = var.launch_each_subnet ? "${var.name}-mixed-${count.index + 1}" : "${var.name}-mixed"
+  name_prefix = format("%s-%s-", var.name, "mixed")
 
   min_size = var.min
   max_size = var.max
@@ -75,19 +76,26 @@ resource "aws_autoscaling_group" "worker-mixed" {
     }
   }
 
-  tags = concat(
-    [
-      {
-        "key"                 = "asg:lifecycle"
-        "value"               = "mixed"
-        "propagate_at_launch" = true
-      },
-      # {
-      #   "key"                 = "asg:az"
-      #   "value"               = var.launch_each_subnet ? var.subnet_azs[count.index] : "-"
-      #   "propagate_at_launch" = true
-      # },
-    ],
-    local.worker_tags,
-  )
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes        = [desired_capacity]
+  }
+
+  tags = local.tags
+
+  # tags = concat(
+  #   [
+  #     {
+  #       key                 = "asg:lifecycle"
+  #       value               = "mixed"
+  #       propagate_at_launch = true
+  #     },
+  #     # {
+  #     #   key                 = "asg:az"
+  #     #   value               = var.launch_each_subnet ? var.subnet_azs[count.index] : "-"
+  #     #   propagate_at_launch = true
+  #     # },
+  #   ],
+  #   local.tags,
+  # )
 }

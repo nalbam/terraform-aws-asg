@@ -5,7 +5,7 @@ locals {
 }
 
 locals {
-  worker_tags = concat(
+  tags = concat(
     [
       {
         key                 = "Name"
