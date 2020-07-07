@@ -17,12 +17,10 @@ resource "aws_launch_configuration" "worker" {
 
   iam_instance_profile = aws_iam_instance_profile.worker.name
 
-  security_groups = var.security_groups
-
-  # security_groups = concat(
-  #   [aws_security_group.worker.id],
-  #   var.security_groups,
-  # )
+  security_groups = concat(
+    [aws_security_group.worker.id],
+    var.security_groups,
+  )
 
   ebs_optimized = var.ebs_optimized
 
