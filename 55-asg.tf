@@ -5,21 +5,24 @@ resource "aws_launch_configuration" "worker" {
 
   name_prefix = "${var.name}-"
 
-  image_id             = var.ami_id != "" ? var.ami_id : data.aws_ami.worker.id
-  instance_type        = var.instance_type
-  iam_instance_profile = aws_iam_instance_profile.worker.name
-  user_data_base64     = base64encode(var.user_data)
+  image_id         = var.ami_id != "" ? var.ami_id : data.aws_ami.worker.id
+  instance_type    = var.instance_type
+  user_data_base64 = base64encode(var.user_data)
 
   key_name = var.key_path != "" ? var.name : var.key_name
 
   associate_public_ip_address = var.associate_public_ip_address
 
-  security_groups = concat(
-    [aws_security_group.worker.id],
-    var.security_groups,
-  )
-
   enable_monitoring = var.enable_monitoring
+
+  iam_instance_profile = aws_iam_instance_profile.worker.name
+
+  security_groups = var.security_groups
+
+  # security_groups = concat(
+  #   [aws_security_group.worker.id],
+  #   var.security_groups,
+  # )
 
   ebs_optimized = var.ebs_optimized
 

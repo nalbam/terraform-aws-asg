@@ -1,16 +1,16 @@
 # output
 
-output "iam_role_arn" {
-  value = aws_iam_role.worker.arn
-}
+# output "iam_role_arn" {
+#   value = aws_iam_role.worker.arn
+# }
 
-output "iam_role_name" {
-  value = aws_iam_role.worker.name
-}
+# output "iam_role_name" {
+#   value = aws_iam_role.worker.name
+# }
 
-output "security_group_id" {
-  value = aws_security_group.worker.id
-}
+# output "security_group_id" {
+#   value = aws_security_group.worker.id
+# }
 
 output "aws_launch_configuration_ids" {
   value = aws_launch_configuration.worker.*.id

@@ -23,21 +23,22 @@ resource "aws_launch_template" "worker-mixed" {
     }
   }
 
-  iam_instance_profile {
-    name = aws_iam_instance_profile.worker.name
-  }
-
   monitoring {
     enabled = var.enable_monitoring
+  }
+
+  iam_instance_profile {
+    name = aws_iam_instance_profile.worker.name
   }
 
   network_interfaces {
     delete_on_termination       = true
     associate_public_ip_address = var.associate_public_ip_address
-    security_groups = concat(
-      [aws_security_group.worker.id],
-      var.security_groups,
-    )
+    # security_groups = concat(
+    #   [aws_security_group.worker.id],
+    #   var.security_groups,
+    # )
+    security_groups = var.security_groups
   }
 }
 

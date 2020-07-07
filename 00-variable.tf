@@ -91,6 +91,10 @@ variable "user_data" {
   default = ""
 }
 
+variable "role_name" {
+  default = ""
+}
+
 variable "security_groups" {
   type    = list(string)
   default = []
