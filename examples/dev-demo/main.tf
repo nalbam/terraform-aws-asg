@@ -2,11 +2,11 @@
 
 terraform {
   backend "s3" {
-    region = "ap-northeast-2"
-    bucket = "terraform-nalbam-seoul"
-    key    = "asg-demo.tfstate"
-    # encrypt        = true
-    # dynamodb_table = "terraform-resource-lock"
+    region         = "ap-northeast-2"
+    bucket         = "terraform-workshop-147748575754"
+    key            = "asg-demo.tfstate"
+    dynamodb_table = "terraform-workshop-147748575754"
+    encrypt        = true
   }
   required_version = ">= 0.12"
 }

@@ -4,7 +4,7 @@ data "terraform_remote_state" "vpc" {
   backend = "s3"
   config = {
     region = "ap-northeast-2"
-    bucket = "terraform-nalbam-seoul"
+    bucket = "terraform-workshop-147748575754"
     key    = "vpc-demo.tfstate"
   }
 }
