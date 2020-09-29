@@ -8,7 +8,6 @@ terraform {
     dynamodb_table = "terraform-workshop-147748575754"
     encrypt        = true
   }
-  required_version = ">= 0.12"
 }
 
 provider "aws" {
