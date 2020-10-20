@@ -95,6 +95,11 @@ variable "role_name" {
   default = ""
 }
 
+variable "target_group_arns" {
+  type    = list(string)
+  default = []
+}
+
 variable "security_groups" {
   type    = list(string)
   default = []

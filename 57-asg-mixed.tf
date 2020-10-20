@@ -48,6 +48,8 @@ resource "aws_autoscaling_group" "worker-mixed" {
 
   vpc_zone_identifier = var.launch_each_subnet ? [var.subnet_ids[count.index]] : var.subnet_ids
 
+  target_group_arns = var.target_group_arns
+
   mixed_instances_policy {
     instances_distribution {
       on_demand_base_capacity                  = var.on_demand_base

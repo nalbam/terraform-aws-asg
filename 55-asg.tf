@@ -42,6 +42,8 @@ resource "aws_autoscaling_group" "worker" {
 
   vpc_zone_identifier = var.launch_each_subnet ? [var.subnet_ids[count.index]] : var.subnet_ids
 
+  target_group_arns = var.target_group_arns
+
   launch_configuration = aws_launch_configuration.worker[0].id
 
   lifecycle {

@@ -13,10 +13,10 @@ locals {
   )
 
   asg_tags = [
-    for item in keys(local.merge_tags) :
+    for item in keys(local.tags) :
     map(
       "key", item,
-      "value", element(values(local.merge_tags), index(keys(local.merge_tags), item)),
+      "value", element(values(local.tags), index(keys(local.tags), item)),
       "propagate_at_launch", true,
     )
   ]
