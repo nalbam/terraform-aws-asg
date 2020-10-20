@@ -5,16 +5,14 @@ locals {
 }
 
 locals {
-  def_tags = {
-    "Name" = var.name
-  }
-
-  merge_tags = merge(
-    local.def_tags,
+  tags = merge(
     var.tags,
+    {
+      "Name" = var.name
+    },
   )
 
-  tags = [
+  asg_tags = [
     for item in keys(local.merge_tags) :
     map(
       "key", item,
