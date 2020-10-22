@@ -3,7 +3,7 @@
 terraform {
   backend "s3" {
     region         = "ap-northeast-2"
-    bucket         = "terraform-workshop-seoul"
+    bucket         = "terraform-workshop-082867736673"
     key            = "asg-demo.tfstate"
     dynamodb_table = "terraform-resource-lock"
     encrypt        = true
@@ -49,31 +49,10 @@ module "asg" {
   key_name = var.key_name
   key_path = var.key_path
 
-  tags = [
-    {
-      key                 = "Name"
-      value               = "${var.name}-worker"
-      propagate_at_launch = true
-    },
-    {
-      key                 = "KubernetesCluster"
-      value               = var.name
-      propagate_at_launch = true
-    },
-    {
-      key                 = "kubernetes.io/cluster/${var.name}"
-      value               = "owned"
-      propagate_at_launch = true
-    },
-    {
-      key                 = "k8s.io/cluster-autoscaler/${var.name}"
-      value               = "owned"
-      propagate_at_launch = true
-    },
-    {
-      key                 = "k8s.io/cluster-autoscaler/enabled"
-      value               = "true"
-      propagate_at_launch = true
-    },
-  ]
+  tags = {
+    "KubernetesCluster"                     = var.name
+    "kubernetes.io/cluster/${var.name}"     = "owned"
+    "k8s.io/cluster-autoscaler/${var.name}" = "owned"
+    "k8s.io/cluster-autoscaler/enabled"     = "true"
+  }
 }

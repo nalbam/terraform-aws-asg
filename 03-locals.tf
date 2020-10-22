@@ -13,7 +13,7 @@ locals {
   )
 
   asg_tags = [
-    for item in keys(local.tags) :
+    for item in keys(local.tags):
     map(
       "key", item,
       "value", element(values(local.tags), index(keys(local.tags), item)),
