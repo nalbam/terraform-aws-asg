@@ -1,44 +1,49 @@
 # terraform-aws-asg
 
-## usage
+## Requirements
 
-```terraform
-module "bastion" {
-  source = "github.com/nalbam/terraform-aws-asg"
+No requirements.
 
-  name = var.name
+## Providers
 
-  vpc_id = var.vpc_id
+| Name | Version |
+|------|---------|
+| aws | n/a |
 
-  subnet_ids = var.subnet_ids
+## Inputs
 
-  launch_configuration_enable = true
-  launch_template_enable      = false
-  launch_each_subnet          = false
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| ami\_id | n/a | `string` | `""` | no |
+| associate\_public\_ip\_address | n/a | `bool` | `false` | no |
+| ebs\_optimized | n/a | `bool` | `true` | no |
+| enable\_monitoring | n/a | `bool` | `true` | no |
+| instance\_type | n/a | `string` | `"t2.micro"` | no |
+| key\_name | n/a | `string` | `""` | no |
+| key\_path | n/a | `string` | `""` | no |
+| launch\_configuration\_enable | n/a | `bool` | `true` | no |
+| launch\_each\_subnet | n/a | `bool` | `false` | no |
+| launch\_template\_enable | n/a | `bool` | `false` | no |
+| max | n/a | `string` | `"5"` | no |
+| min | n/a | `string` | `"1"` | no |
+| mixed\_instances | n/a | `list(string)` | `[]` | no |
+| name | Name of the cluster, e.g: seoul-dev-demo | `any` | n/a | yes |
+| on\_demand\_base | n/a | `string` | `"1"` | no |
+| on\_demand\_rate | n/a | `string` | `"30"` | no |
+| role\_name | n/a | `string` | `""` | no |
+| security\_groups | n/a | `list(string)` | `[]` | no |
+| subnet\_ids | n/a | `list(string)` | `[]` | no |
+| tags | n/a | `map(string)` | `{}` | no |
+| target\_group\_arns | n/a | `list(string)` | `[]` | no |
+| user\_data | n/a | `string` | `""` | no |
+| volume\_size | n/a | `string` | `"8"` | no |
+| volume\_type | n/a | `string` | `"gp2"` | no |
+| vpc\_id | n/a | `string` | `""` | no |
 
-  associate_public_ip_address = true
+## Outputs
 
-  instance_type = "t2.micro"
-
-  user_data = data.template_file.setup.rendered
-
-  volume_type = "gp2"
-  volume_size = "8"
-
-  min = "1"
-  max = "5"
-
-  on_demand_base = "1"
-  on_demand_rate = "30"
-
-  key_name = "nalbam-seoul"
-
-  tags = [
-    {
-      key                 = "Type"
-      value               = "bastion"
-      propagate_at_launch = true
-    },
-  ]
-}
-```
+| Name | Description |
+|------|-------------|
+| aws\_autoscaling\_group\_ids | n/a |
+| aws\_launch\_configuration\_ids | n/a |
+| aws\_launch\_template\_ids | n/a |
