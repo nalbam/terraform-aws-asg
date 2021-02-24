@@ -1,5 +1,6 @@
 # terraform-aws-asg
 
+<!--- BEGIN_TF_DOCS --->
 ## Requirements
 
 No requirements.
@@ -47,3 +48,5 @@ No requirements.
 | aws\_autoscaling\_group\_ids | n/a |
 | aws\_launch\_configuration\_ids | n/a |
 | aws\_launch\_template\_ids | n/a |
+
+<!--- END_TF_DOCS --->
